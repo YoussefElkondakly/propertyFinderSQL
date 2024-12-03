@@ -41,8 +41,7 @@ exports.viewMatchAds = catchAsync(async (req, res, next) => {
   if (!request) return next(new AppError("No Request Found", 404));
   // console.log(request);
   const budget = request.price;
-  //$or: [ { score: { $gt: 70, $lt: 90 } }
-  //district, price, and area
+  
   console.log(budget + budget * 0.1, budget - budget * 0.1);
   const ads = await Ads.aggregate(
     [

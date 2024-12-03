@@ -192,9 +192,9 @@ exports.deleteAd = catchAsync(async (req, res, next) => {
 //✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 
 exports.matchRequest = catchAsync(async (req, res, next) => {
-    const page = req.query.page || 1;
-    const limit = req.query.limit || 10;
-    const offset = (page - 1) * limit;
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 10;
+  const offset = (page - 1) * limit;
   const ad = await req.youser.getAds();
   if (!ad) return next(new AppError("No Ads", 404));
   const budget = ad[0].price;
@@ -266,7 +266,9 @@ exports.matchRequest = catchAsync(async (req, res, next) => {
 //✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 
 exports.getRequest = catchAsync(async (req, res, next) => {
-  const request = await RequestAd.findAll({where:{ id: req.params.requestId} });
+  const request = await RequestAd.findAll({
+    where: { id: req.params.requestId },
+  });
   if (!request[0]) return next(new AppError("No Request Found", 404));
   console.log(request[0]);
   request[0].status = true;

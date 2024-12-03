@@ -7,4 +7,5 @@ const relationShips = function () {
   RequestAd.belongsTo(User, { constrains: true, onDelete: "CASCADE" });
   User.hasMany(RequestAd);
 };
+
 module.exports = relationShips;

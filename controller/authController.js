@@ -67,8 +67,17 @@ exports.protect = catchAsync(async (req, res, next) => {
   //  console.log(data)
   //here you will compare the TS of The TOKEN with The TS of PasswordChanged at
   const id = data.data;
-  const uuser = await User.findByPk(id,{
-    attributes: ['id', 'name', 'phone', 'role', 'verified', 'createdAt','updatedAt','photo']
+  const uuser = await User.findByPk(id, {
+    attributes: [
+      "id",
+      "name",
+      "phone",
+      "role",
+      "verified",
+      "createdAt",
+      "updatedAt",
+      "photo",
+    ],
   });
   const user = uuser.dataValues;
   // console.log(user)
@@ -81,7 +90,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     );
   req.user = user;
   //اوحش تسمية فالتاريخ البرمجي 😶🙄
-  req.youser=uuser
+  req.youser = uuser;
   next();
 });
 /**************************************************************/

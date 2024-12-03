@@ -3,7 +3,6 @@ const authController = require("./../controller/authController");
 const agentController = require("./../controller/agentController");
 const router = express.Router();
 router.use(authController.protect, authController.accessManager("agent"));
-//The first route is like a home of all requests in the agent routes
 router.get("/requests", agentController.getAllRequests);
 router.post(
   "/makeAd",
@@ -30,9 +29,10 @@ router
   .patch(
     //agentController.checkOwnerShip,
     agentController.uploadImage,
-agentController.checkBody
+    agentController.checkBody
   )
   .delete(
-    //agentController.checkOwnerShip, 
-    agentController.deleteAd);
+    //agentController.checkOwnerShip,
+    agentController.deleteAd
+  );
 module.exports = router;

@@ -1,12 +1,11 @@
-const Sequelize = require('sequelize');
-const sequelize=require('./../utils/database')
+const Sequelize = require("sequelize");
+const sequelize = require("./../utils/database");
 
 const Ads = sequelize.define("ads", {
   propertyType: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-
       notNull: {
         msg: "Property Type is required",
       },
@@ -87,8 +86,10 @@ const Ads = sequelize.define("ads", {
     },
   },
 });
-Ads.beforeValidate(function (ad) {if (ad.propertyType) {
-  ad.propertyType = ad.propertyType.toUpperCase();}else if (ad.type) {
+Ads.beforeValidate(function (ad) {
+  if (ad.propertyType) {
+    ad.propertyType = ad.propertyType.toUpperCase();
+  } else if (ad.type) {
     ad.type = ad.type.toUpperCase();
   }
 });

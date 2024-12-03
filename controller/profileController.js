@@ -8,9 +8,7 @@ exports.getMyProfile = catchAsync(async (req, res, next) => {
   // if (!user) return next(new AppError("User Not found", 404));
   res.status(200).json({
     status: "success",
-    data: 
-      req.user,
-    
+    data: req.user,
   });
 });
 exports.updateProfile = catchAsync(async (req, res, next) => {
@@ -19,18 +17,17 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
   const user = await User.update(req.body, {
     where: { id: req.user.id },
     returning: [
-        "id",
-        "name",
-        "phone",
-        "role",
-        "verified",
-        "createdAt",
-        "updatedAt",
-        "photo",
-      ],
-    
+      "id",
+      "name",
+      "phone",
+      "role",
+      "verified",
+      "createdAt",
+      "updatedAt",
+      "photo",
+    ],
   });
-  console.log(user)
+  console.log(user);
   //prevent
   if (!user) return next(new AppError("User Not found", 404));
   res.status(200).json({
@@ -42,7 +39,7 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
-  const user = await User.findByPk(req.user.id)
+  const user = await User.findByPk(req.user.id);
   if (!user) return next(new AppError("User Not found", 404));
   if (!req.body.newPassword)
     return next(new AppError("Password does not match ", 400));
@@ -50,13 +47,14 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     req.body.password,
     user.password
   );
-//   console.log(checkOldPassword);
+  //   console.log(checkOldPassword);
   if (!checkOldPassword)
     return next(
       new AppError("Please make sure you typed The Correct Password")
     );
-  if ((req.body.newPassword === req.body.confirmPassword)) user.passwordChangedAt=Date.now()-1000
-    user.password = req.body.newPassword;
+  if (req.body.newPassword === req.body.confirmPassword)
+    user.passwordChangedAt = Date.now() - 1000;
+  user.password = req.body.newPassword;
   user.confirmPassword = req.body.confirmPassword;
 
   await user.save();
@@ -67,7 +65,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     },
   });
 });
-exports.deleteProfile=catchAsync(async (req,res,next)=>{
+exports.deleteProfile = catchAsync(async (req, res, next) => {
   //we can implement await User.destroy({where: {id:req.user.id},}); Too
   const user = await User.update(
     { status: false },
@@ -83,4 +81,4 @@ exports.deleteProfile=catchAsync(async (req,res,next)=>{
     status: "success",
     data: null,
   });
-})
+});

@@ -8,7 +8,7 @@ const sendEmail = async (opt) => {
     port: 587, // or 465
     auth: {
       user: "30c2967bf9dad8",
-      
+
       pass: "8fcaad818bd8e2",
     },
     secure: false, // use TLS

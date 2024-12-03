@@ -7,4 +7,4 @@ const DB = process.env.DB_CONNECT.replace(
 );
 
 const sequelize = new Sequelize(DB);
-module.exports=sequelize
+module.exports = sequelize;

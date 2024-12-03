@@ -26,7 +26,6 @@ const RequestAd = sequelize.define("requests", {
         msg: "you Need To provide the area of the property",
       },
     },
-    // required: [true, "you Need To provide the area of the property"],
   },
   district: {
     type: Sequelize.STRING,

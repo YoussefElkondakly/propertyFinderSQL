@@ -80,7 +80,7 @@ const User = sequelize.define("users", {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  status:{
+  status: {
     type: Sequelize.BOOLEAN,
     defaultValue: true,
   },
@@ -88,7 +88,6 @@ const User = sequelize.define("users", {
   passwordResetToken: Sequelize.STRING,
   passwordResetExpires: Sequelize.DATE,
   verifyUserToken: Sequelize.STRING,
-
 });
 User.prototype.checkChangedPassword = function (jwtIat) {
   //Here we can use This

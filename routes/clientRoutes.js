@@ -15,13 +15,22 @@ router.get(
   clientController.checkOwnerShip,
   clientController.viewMatchAds
 );
-router.get("/requests/:requestId",clientController.checkOwnerShip, clientController.getRequest);
-router.patch("/requests/:requestId",clientController.checkOwnerShip, clientController.updateRequest);
-router.delete("/requests/:requestId",clientController.checkOwnerShip, clientController.deleteRequest);
-
-
-
+router.get(
+  "/requests/:requestId",
+  clientController.checkOwnerShip,
+  clientController.getRequest
+);
+router.patch(
+  "/requests/:requestId",
+  clientController.checkOwnerShip,
+  clientController.updateRequest
+);
+router.delete(
+  "/requests/:requestId",
+  clientController.checkOwnerShip,
+  clientController.deleteRequest
+);
 
 //Will Make The one User Only Make one Request
 
-module.exports=router 
+module.exports = router;
